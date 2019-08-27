@@ -1,0 +1,9 @@
+
+  <td><%= task.description %></td>
+  <td><%= task.completed %></td>
+  <td><%= link_to 'Show', "#" %></td>
+  <td><%= link_to 'Edit', "#" %></td>
+  <td>  <%= link_to 'Destroy Task', [task.list, task],
+  method: :delete,
+  data: { confirm: 'Are you sure?'}
+  %></td>

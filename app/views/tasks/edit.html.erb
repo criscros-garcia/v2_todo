@@ -1,0 +1,19 @@
+<h1>Edit Task <%= @task.description %></h1>
+
+<%= link_to 'Back', lists_path(@list), class: 'btn btn-light btn-primary' %>
+
+<%= form_with(model:[@list, @list.tasks.find(@task.id)], local: true) do |form| %>
+  <p>
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </p>
+
+  <p>
+    <%= form.label :completed %>
+    <%= form.check_box :completed %>
+  </p>
+  <p>
+    <%= form.submit 'Edit Task', class: 'btn btn-primary' %>
+  </p>
+
+<% end %>

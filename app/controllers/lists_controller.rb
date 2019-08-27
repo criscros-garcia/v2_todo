@@ -4,12 +4,23 @@ class ListsController < ApplicationController
   # GET /lists
   # GET /lists.json
   def index
-    @lists = List.all
+    @lists = current_user.lists.all
+    respond_to do |format|
+      format.html
+      format.csv {send_data @lists.to_csv}
+      format.pdf {render template: 'lists/listsreport', pdf: 'Lists'}
+    end
+
   end
 
   # GET /lists/1
   # GET /lists/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.csv {send_data @list.tasks.to_csv}
+      format.pdf {render template: 'tasks/tasksreport', pdf: 'Tasks'}
+    end
   end
 
   # GET /lists/new
@@ -24,7 +35,7 @@ class ListsController < ApplicationController
   # POST /lists
   # POST /lists.json
   def create
-    @list = List.new(list_params)
+    @list = current_user.lists.new(list_params)
 
     respond_to do |format|
       if @list.save
