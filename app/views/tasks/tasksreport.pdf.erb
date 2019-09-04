@@ -2,16 +2,17 @@
 <html>
 <head>
   <title></title>
-  <%= wicked_pdf_stylesheet_link_tag 'pdf' %>
+  <%# <%= wicked_pdf_stylesheet_link_tag 'pdf' %>
+<link rel="stylesheet" type="text/text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body class="main-content">
 
-  <h1 class="display-3 text-center titleList">List Name: <%= @list.name %></h1>
+  <h1>List Name: <%= @list.name %></h1>
   <br>
   <div class="contentTable">
-    <table class="table table-striped">
+    <table class="table">
       <thead>
-        <tr class="bg-primary" style="color:white">
+        <tr>
           <th scope="col">Title</th>
           <th scope="col">Description</th>
         </tr>

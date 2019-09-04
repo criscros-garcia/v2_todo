@@ -4,13 +4,18 @@ class ListsController < ApplicationController
   # GET /lists
   # GET /lists.json
   def index
+    SendPendingTasksJob.perform_later(current_user)
+
     @lists = current_user.lists.all
     respond_to do |format|
       format.html
       format.csv {send_data @lists.to_csv}
-      format.pdf {render template: 'lists/listsreport', pdf: 'Lists'}
+      format.pdf do
+        render pdf: 'Lists',
+               template: 'lists/listsreport',
+               layout: 'layout'
+      end
     end
-
   end
 
   # GET /lists/1
@@ -39,7 +44,7 @@ class ListsController < ApplicationController
 
     respond_to do |format|
       if @list.save
-        format.html { redirect_to @list, notice: 'List was successfully created.' }
+        format.html { redirect_to @list, notice: 'List was successfully created.', class:"alert alert-success" }
         format.json { render :show, status: :created, location: @list }
       else
         format.html { render :new }

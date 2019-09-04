@@ -1,14 +1,17 @@
 <%= form_with(model: [ @list, @list.tasks.build ], local: true) do |form| %>
-  <p>
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </p>
 
-  <p>
-    <%= form.label :completed %>
-    <%= form.check_box :completed %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_field :description, class:"form-control" %>
+  </div>
+
+  <div class="form-group form-check">
+    <%= form.label :completed, class:"form-check-label"%>
+    <%= form.check_box :completed, class:"form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit 'Add Task', class:"btn btn-primary btn-block" %>
+  </div>
+
 <% end %>

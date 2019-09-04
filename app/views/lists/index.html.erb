@@ -1,10 +1,12 @@
-<p id="notice"><%= notice %></p>
 
-<h1>
-  Lists
-  <%= link_to 'CSV', lists_path(format: 'csv'), class:'btn btn-primary' %>
-  <%= link_to 'PDF', lists_path(format: 'pdf'), class:'btn btn-primary' %>
-</h1>
+<div class="jumbotron">
+  <h1>
+    Lists
+    <%= link_to 'CSV', lists_path(format: 'csv'), class:'btn btn-info' %>
+    <%= link_to 'PDF', lists_path(format: 'pdf'), class:'btn btn-info' %>
+  </h1>
+</div>
+
 
 <table class="table table-bordered">
   <thead>
@@ -20,9 +22,11 @@
       <tr>
         <td><%= list.name %></td>
         <td><%= list.completed %></td>
-        <td><%= link_to 'Show', list %></td>
-        <td><%= link_to 'Edit', edit_list_path(list) %></td>
-        <td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', list, class:"btn btn-primary btn-block" %></td>
+        <td><%= link_to 'Edit', edit_list_path(list),class:"btn btn-success btn-block" %></td>
+        <td><%= link_to 'Destroy', list, method: :delete,
+          class:"btn btn-danger btn-block",
+          data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New List', new_list_path %>
+<%= link_to 'New List', new_list_path, class:"btn btn-primary" %>

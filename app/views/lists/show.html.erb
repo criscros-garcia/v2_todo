@@ -1,12 +1,13 @@
-<!--<p id="notice"><%= notice %></p>-->
 
-<!--<%= render @list.tasks %> -->
-<h1>
-  <strong>List Name:</strong>
-  <%= @list.name %>
-  <%= link_to 'CSV', list_path(@list, format: 'csv'), class:'btn btn-primary' %>
-  <%= link_to 'PDF', list_path(@list, format: 'pdf'), class:'btn btn-primary' %>
-</h1>
+<div class="jumbotron">
+  <h1>
+    <strong>List Name:</strong> <%= @list.name %>
+    <%= link_to 'CSV', list_path(@list, format: 'csv'), class:'btn btn-info' %>
+    <%= link_to 'PDF', list_path(@list, format: 'pdf'), class:'btn btn-info' %>
+  </h1>
+
+
+</div>
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -22,18 +23,20 @@
           <tr class="table-secondary">
             <td class="striker"><%= task.description %></td>
             <td><%= task.completed %></td>
-            <td><%= link_to 'Edit', edit_list_task_path(@list, task) %></td>
-            <td><%= link_to 'Destroy Task', [task.list, task],
+            <td><%= link_to 'Edit', edit_list_task_path(@list, task), class:"btn btn-success btn-block" %></td>
+            <td><%= link_to 'Delete', [task.list, task],
+            class:"btn btn-danger btn-block",
             method: :delete,
             data: { confirm: 'Are you sure?'}
             %></td>
           </tr>
       <% else %>
-          <tr>
+          <tr class="table-primary">
             <td><%= task.description %></td>
             <td><%= task.completed %></td>
-            <td><%= link_to 'Edit', edit_list_task_path(@list, task) %></td>
-            <td><%= link_to 'Destroy Task', [task.list, task],
+            <td><%= link_to 'Edit', edit_list_task_path(@list, task), class:"btn btn-success btn-block" %></td>
+            <td><%= link_to 'Delete', [task.list, task],
+            class:"btn btn-danger btn-block",
             method: :delete,
             data: { confirm: 'Are you sure?'}
             %></td>
@@ -44,9 +47,15 @@
   </tbody>
 </table>
 
-
-<h2>Add a Task:</h2>
-<%= render 'tasks/form' %>
-
-<%= link_to 'Edit', edit_list_path(@list) %> |
-<%= link_to 'Back', lists_path %>
+  <div class="row">
+    <div class="col-md-6 offset-md-3 text-center">
+        <div class="card">
+          <div class="card-body">
+            <h2>Add a Task:</h2>
+            <%= render 'tasks/form' %>
+            <%= link_to 'Edit', edit_list_path(@list) %> |
+            <%= link_to 'Back', lists_path %>
+          </div>
+        </div>
+    </div>
+  </div>

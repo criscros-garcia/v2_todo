@@ -1,9 +1,9 @@
 
-  <td><%= task.description %></td>
-  <td><%= task.completed %></td>
-  <td><%= link_to 'Show', "#" %></td>
-  <td><%= link_to 'Edit', "#" %></td>
-  <td>  <%= link_to 'Destroy Task', [task.list, task],
-  method: :delete,
-  data: { confirm: 'Are you sure?'}
-  %></td>
+
+<td><%= @task.completed %></td>
+<td><%= link_to 'Edit', edit_list_task_path(@list, task), class:"btn btn-success btn-block" %></td>
+<td><%= link_to 'Delete', [task.list, task],
+class:"btn btn-danger btn-block",
+method: :delete,
+data: { confirm: 'Are you sure?'}
+%></td>
