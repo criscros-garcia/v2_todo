@@ -3,6 +3,6 @@ class SendPendingTasksJob < ApplicationJob
 
   def perform(user)
     @user = user
-    PendingMailer.submission(@user.email).deliver_later(wait_until: 0.2.minutes.from_now)
+    PendingMailer.submission(@user.email).deliver_later(wait_until: 5.days.from_now)
   end
 end
