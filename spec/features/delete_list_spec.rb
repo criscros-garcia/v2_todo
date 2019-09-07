@@ -3,13 +3,13 @@ require 'rails_helper'
 
 
 RSpec.describe 'Deleting a list', type: :feature do
-  # before do
-  #   user = FactoryBot.create(:user)
-  #   login_as(user, :scope => :user)
-  # end
+  before(:each) do
+    @user = FactoryBot.create(:user)
+    login_as(@user, :scope => :user)
+  end
 
   scenario 'success' do
-    List.create!(name: 'Homework')
+    @user.lists.create!(name: 'Homework')
     visit lists_path
     expect(page).to have_content('Homework')
     click_on 'Destroy'

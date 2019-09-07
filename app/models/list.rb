@@ -2,6 +2,7 @@ class List < ApplicationRecord
 
   has_many :tasks, dependent: :destroy
   belongs_to :user
+
   validates :name, presence: true,
   length: { minimum: 5 },
   format: { with: /\A[a-zA-Z0-9 ]+\z/,

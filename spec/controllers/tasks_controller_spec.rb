@@ -4,12 +4,13 @@ RSpec.describe TasksController, type: :controller do
   login_user
 
   scenario 'Invalid characters in the description' do
-    list = subject.current_user.lists.new(name: '.$%&-')
-    list.valid?
+    list = subject.current_user.lists.create(name: '.$%&-')
+    expect(list.valid?).to be_falsey
+
     task = list.tasks.new(description: '&%$sdcs')
-    task.valid?
-    expect(task.errors[:description]).to include('letters and numbers are just allowed')
+    expect(task.valid?).to be_falsey
+
+    message = task.errors.full_messages_for(:description).first
+    expect(message).to include('just letters and numbers are allowed')
   end
-
-
 end

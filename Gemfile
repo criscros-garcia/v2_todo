@@ -1,7 +1,9 @@
-source 'https://rubygems.org'
+ruby '2.6.3'
+
+source "https://rubygems.org"
+
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
 gem 'devise'
 gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'jquery-rails'
@@ -68,12 +70,12 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
 
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '2.53.4'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
   gem 'shoulda-matchers'
   gem 'database_cleaner'
-  gem 'faker', '~> 1.6.1'
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

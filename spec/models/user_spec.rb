@@ -1,8 +1,13 @@
 require 'rails_helper'
 
 describe User do
-  it { is_expected.to validate_presence_of(:name) }
-  it { is_expected.to validate_presence_of(:email) }
-  it { is_expected.to validate_presence_of(:description) }
-  it { is_expected.to validate_presence_of(:password) }
+  describe 'associations' do
+    it { should have_many(:lists) }
+  end
+
+  describe 'validations' do
+    it { should validate_presence_of(:email) }
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:password) }
+  end
 end
